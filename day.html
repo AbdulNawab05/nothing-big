@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Day</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Nunito&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="day-page">
+
+  <!-- Background effects (hidden by default) -->
+  <div class="rose-bg" id="roseBg"></div>
+
+  <!-- Main content -->
+  <div class="card day-card-content" id="content"></div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const day = params.get("day");
+    const content = document.getElementById("content");
+    const roseBg = document.getElementById("roseBg");
+
+    if (day == 7) {
+  roseBg.style.display = "block";
+
+  content.innerHTML = `
+    <h2 class="rose-title">Rose Day</h2>
+
+    <p class="rose-text">
+      I can’t give you flowers right now,<br>
+      so here’s the next best thing<br>
+      for my girl who deserves all the roses in the world.
+    </p>
+
+    <div class="rose-wrap">
+      <img src="rose.png" id="rose" />
+      <span class="tap-hint">tap the rose 🌹</span>
+    </div>
+
+    <p id="reveal" class="rose-reveal">
+      I tried okay. But if I could,<br>
+      I’d give you one every single day.
+    </p>
+  `;
+
+  const rose = document.getElementById("rose");
+  const reveal = document.getElementById("reveal");
+
+  rose.addEventListener("click", () => {
+    rose.classList.add("bloom");
+    reveal.classList.add("show");
+    spawnPetals();
+  });
+}
+else if (day == 8) {
+  content.innerHTML = `
+    <h2 class="propose-title">Propose Day 💍</h2>
+
+    <p class="propose-text">
+      Okay.<br>
+      No bakchodi for a second.<br>
+      I just wanna confirm smth
+      // Wanna be stuck w me forever?
+    </p>
+
+    <div class="propose-buttons">
+      <button id="proposeYes" class="propose-btn yes">Yes</button>
+      <button id="proposeNo" class="propose-btn no">No</button>
+    </div>
+
+    <p id="propose-note" class="propose-note"></p>
+  `;
+
+  const yesBtn = document.getElementById("proposeYes");
+  const noBtn = document.getElementById("proposeNo");
+  const note = document.getElementById("propose-note");
+  const container = document.querySelector(".propose-buttons");
+
+  let step = 0;
+
+  /* ===== EVIL RUNAWAY NO BUTTON ===== */
+  noBtn.style.position = "absolute";
+
+  function moveNoButton() {
+    const containerRect = container.getBoundingClientRect();
+    const btnRect = noBtn.getBoundingClientRect();
+
+    const maxX = containerRect.width - btnRect.width;
+    const maxY = containerRect.height - btnRect.height;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+    const rot = Math.random() * 30 - 15;
+
+    noBtn.style.left = `${x}px`;
+    noBtn.style.top = `${y}px`;
+    noBtn.style.transform = `rotate(${rot}deg)`;
+    noBtn.textContent = "Nope";
+  }
+
+  noBtn.addEventListener("mouseenter", moveNoButton);
+  noBtn.addEventListener("click", moveNoButton);
+
+  /* ===== YES BUTTON LOGIC ===== */
+  yesBtn.addEventListener("click", () => {
+    if (step === 0) {
+      yesBtn.textContent = "Wait. Are you sure?";
+      step++;
+    } else {
+      document.querySelector(".propose-buttons").style.display = "none";
+
+      spawnSoftHearts();
+
+      note.innerHTML = `
+        <span class="tease">
+          Good lol you never had a choice anyways you’re mine.
+        </span>
+      `;
+    }
+  });
+}
+
+
+function spawnSoftHearts() {
+  for (let i = 0; i < 8; i++) {
+    const heart = document.createElement("div");
+    heart.textContent = "💗";
+    heart.style.position = "fixed";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.top = "65%";
+    heart.style.fontSize = "1.4rem";
+    heart.style.animation = "heartFloat 3s ease-out forwards";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 3000);
+  }
+}
+
+//day 7
+function spawnPetals() {
+  for (let i = 0; i < 10; i++) {
+    const petal = document.createElement("div");
+    petal.textContent = "🌸";
+    petal.style.position = "fixed";
+    petal.style.left = Math.random() * window.innerWidth + "px";
+    petal.style.top = "50%";
+    petal.style.fontSize = "1.5rem";
+    petal.style.animation = "petalFall 3s linear forwards";
+    document.body.appendChild(petal);
+
+    setTimeout(() => petal.remove(), 3000);
+  }
+}
+
+
+
+  </script>
+
+</body>
+</html>

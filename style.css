@@ -1,0 +1,417 @@
+/* =====================
+   GLOBAL RESET
+   ===================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* =====================
+   LANDING PAGE (INDEX)
+   ===================== */
+
+body.center {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(135deg, #ffd6e8, #ffeaf4);
+  overflow: hidden;
+}
+
+/* Card */
+.cute-card {
+  background: #fff0f6;
+  border-radius: 28px;
+  padding: 2.8rem 2.2rem;
+  text-align: center;
+
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  max-width: 420px;
+  width: 90%;
+  position: relative;
+  z-index: 2;
+}
+
+/* Quokka mascot */
+.quokka {
+  width: 140px;
+  margin-bottom: 0.8rem;
+}
+
+/* Speech bubble */
+.bubble {
+  display: inline-block;
+  background: white;
+  padding: 0.6rem 1.1rem;
+  border-radius: 18px;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+/* Main question */
+.question {
+  font-family: 'Fredoka', cursive;
+  font-size: 2.2rem;
+  color: #ff4d88;
+  margin-bottom: 1.8rem;
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.9rem 1.8rem;
+  cursor: pointer;
+  font-family: 'Fredoka', cursive;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* YES button */
+#yesBtn {
+  background: #ff6fa5;
+  color: white;
+  font-size: 1.3rem;
+  transform-origin: center bottom;
+}
+
+/* NO button */
+#noBtn {
+  background: #ffd1e1;
+  font-size: 1rem;
+}
+
+/* Floating reaction text */
+.reaction-top {
+  position: fixed;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Fredoka', cursive;
+  color: #ff4d88;
+  font-size: 1.2rem;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* =====================
+   DAYS GRID PAGE
+   ===================== */
+
+body.days-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffd6e8, #ffeaf4);
+  padding: 2rem 1rem;
+  font-family: 'Nunito', sans-serif;
+}
+
+.days-title {
+  text-align: center;
+  font-family: 'Fredoka', cursive;
+  font-size: 2.4rem;
+  color: #ff4d88;
+  margin-bottom: 2rem;
+}
+
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.day-card {
+  background: #fff0f6;
+  border-radius: 20px;
+  padding: 1.4rem 1rem;
+  text-align: center;
+  font-family: 'Fredoka', cursive;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.day-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =====================
+   DAY CONTENT PAGE
+   ===================== */
+
+body.day-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffd6e8, #ffeaf4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Nunito', sans-serif;
+}
+
+.day-card-content {
+  position: relative;
+  z-index: 2;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  background: #fff0f6;
+  border-radius: 28px;
+  padding: 2.6rem 2.2rem;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* =====================
+   ROSE DAY BACKGROUND
+   ===================== */
+
+.rose-bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.rose-bg::before,
+.rose-bg::after {
+  content: "🌹 🌸 🌹 🌸 🌹 🌸 🌹";
+  position: absolute;
+  width: 200%;
+  font-size: 2.8rem;
+  opacity: 0.15;
+  animation: floatRoses 45s linear infinite;
+}
+
+.rose-bg::after {
+  top: 50%;
+  animation-duration: 65s;
+}
+
+@keyframes floatRoses {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ===== ROSE DAY CONTENT ===== */
+
+.rose-title {
+  font-family: 'Fredoka', cursive;
+  color: #ff4d88;
+  font-size: 2rem;
+  margin-bottom: 0.6rem;
+}
+
+.rose-text {
+  font-size: 1rem;
+  margin-bottom: 1.6rem;
+}
+
+.rose-wrap {
+  position: relative;
+  margin: 1rem 0;
+}
+
+#rose {
+  width: 220px;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+
+#rose.bloom {
+  transform: scale(1.15) rotate(-3deg);
+}
+
+.tap-hint {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.rose-reveal {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.6s ease;
+  margin-top: 1.2rem;
+  font-family: 'Fredoka', cursive;
+  color: #ff4d88;
+}
+
+.rose-reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes petalFall {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(300px) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+/* ===== DAY CARD TIMER ===== */
+
+.day-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 1.4rem 1rem 3.2rem; /* bottom space reserved for timer */
+}
+
+
+
+.day-timer {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-family: 'Fredoka', cursive;
+  font-size: 0.85rem;
+  color: #ff4d88;
+
+  background: rgba(255, 255, 255, 0.95);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+
+/* ===== LOCKED DAY FIX (FINAL) ===== */
+
+.day-card {
+  position: relative;
+}
+
+.day-content {
+  text-align: center;
+  z-index: 1;
+}
+
+
+.day-card.locked .day-content {
+  filter: blur(4px);
+  opacity: 0.6;
+}
+
+.day-card.locked {
+  pointer-events: none;
+}
+
+/* ===== TIMER ===== */
+
+.day-timer {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-family: 'Fredoka', cursive;
+  font-size: 0.9rem;
+  color: #ff4d88;
+
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.25rem 0.7rem;
+  border-radius: 14px;
+
+  z-index: 5;
+  pointer-events: none;
+}
+/* ===== PROPOSE DAY ===== */
+
+/* ===== PROPOSE DAY ===== */
+
+.propose-title {
+  font-family: 'Fredoka', cursive;
+  color: #ff4d88;
+  font-size: 2rem;
+  margin-bottom: 0.6rem;
+}
+
+.propose-text {
+  margin-bottom: 1.6rem;
+}
+
+.propose-buttons {
+  position: relative;
+  height: 160px; /* space for the NO button to escape */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.propose-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.8rem 1.8rem;
+  font-family: 'Fredoka', cursive;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.propose-btn.yes {
+  background: #ff6fa5;
+  color: white;
+}
+
+.propose-btn.no {
+  background: #ffd1e1;
+}
+
+.propose-note {
+  font-family: 'Fredoka', cursive;
+  color: #ff4d88;
+  margin-top: 1rem;
+}
+
+.tease {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Heart animation */
+@keyframes heartFloat {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-180px);
+    opacity: 0;
+  }
+}
+
