@@ -243,7 +243,47 @@ else if (day == 11) {
   });
 }
 
+else if (day == 12) {
+  content.innerHTML = `
+    <h2 class="hug-title">Hug Day 🤗</h2>
 
+    <p class="hug-text">
+      Hold to receive your hug.
+    </p>
+
+    <div class="hug-container">
+      <div class="hug-bar" id="hugBar"></div>
+      <button id="hugBtn" class="hug-btn">Hold</button>
+    </div>
+
+    <p id="hugResult"></p>
+  `;
+
+  const btn = document.getElementById("hugBtn");
+  const bar = document.getElementById("hugBar");
+  const result = document.getElementById("hugResult");
+
+  let width = 0;
+  let interval;
+
+  btn.addEventListener("mousedown", () => {
+    interval = setInterval(() => {
+      width += 2;
+      bar.style.width = width + "%";
+
+      if (width >= 100) {
+        clearInterval(interval);
+        result.textContent = "There. That was a proper one.";
+      }
+    }, 40);
+  });
+
+  btn.addEventListener("mouseup", () => {
+    clearInterval(interval);
+  });
+}
+
+    
 function spawnChocoRain() {
   for (let i = 0; i < 10; i++) {
     const drop = document.createElement("div");
