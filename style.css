@@ -605,3 +605,17 @@ body.teddy-warm {
   font-family: 'Fredoka', cursive;
   cursor: pointer;
 }
+
+.blurred {
+  filter: blur(6px);
+}
+
+.kiss-btn {
+  margin-top: 1rem;
+  padding: 0.7rem 1.6rem;
+  border-radius: 999px;
+  border: none;
+  background: #ff6fa5;
+  color: white;
+  font-family: 'Fredoka', cursive;
+}
