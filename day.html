@@ -203,6 +203,46 @@ else if (day == 10) {
   });
 }
 
+else if (day == 11) {
+  content.innerHTML = `
+    <h2 class="promise-title">Promise Day 🤝</h2>
+
+    <p class="promise-text">
+      These arent empty words<br>
+      Its something i swear on
+    </p>
+
+    <button id="openPromise" class="promise-btn">
+      Open
+    </button>
+
+    <div id="promiseList" class="promise-list"></div>
+  `;
+
+  const btn = document.getElementById("openPromise");
+  const list = document.getElementById("promiseList");
+
+  const promises = [
+    "I’ll never leave you, no matter what.",
+    "I’ll make you the happiest girl in the world.",
+    "I’ll most definitely annoy and ragebait you forever.",
+    "I’ll be yours forever and ever."
+  ];
+
+  btn.addEventListener("click", () => {
+    btn.style.display = "none";
+
+    promises.forEach((text, index) => {
+      setTimeout(() => {
+        const p = document.createElement("p");
+        p.textContent = text;
+        p.className = "promise-item";
+        list.appendChild(p);
+      }, index * 800);
+    });
+  });
+}
+
 
 function spawnChocoRain() {
   for (let i = 0; i < 10; i++) {
