@@ -283,6 +283,28 @@ else if (day == 12) {
   });
 }
 
+else if (day == 13) {
+  content.innerHTML = `
+    <h2 class="kiss-title">Kiss Day 😘</h2>
+
+    <p class="kiss-text blurred" id="kissText">
+      You don't get this one without clicking.
+    </p>
+
+    <button id="kissBtn" class="kiss-btn">
+      Reveal
+    </button>
+  `;
+
+  const btn = document.getElementById("kissBtn");
+  const text = document.getElementById("kissText");
+
+  btn.addEventListener("click", () => {
+    text.classList.remove("blurred");
+    text.textContent = "Alright time to kiss with tongue hehehe.";
+  });
+}
+    
     
 function spawnChocoRain() {
   for (let i = 0; i < 10; i++) {
