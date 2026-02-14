@@ -122,6 +122,66 @@ else if (day == 8) {
   });
 }
 
+else if (day == 9) {
+  content.innerHTML = `
+    <h2 class="choco-title">Chocolate Day 🍫</h2>
+
+    <p class="choco-text">
+      Since I can’t physically hand you chocolate,<br>
+      pick one.
+    </p>
+
+    <div class="choco-options">
+      <button class="choco-btn" data-flavor="classic">🍫 Classic</button>
+      <button class="choco-btn" data-flavor="strawberry">🍓 Strawberry</button>
+      <button class="choco-btn" data-flavor="spicy">🌶 Spicy</button>
+      <button class="choco-btn" data-flavor="mystery">🫠 Mystery</button>
+    </div>
+
+    <p id="choco-result" class="choco-result"></p>
+  `;
+
+  const buttons = document.querySelectorAll(".choco-btn");
+  const result = document.getElementById("choco-result");
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const flavor = btn.dataset.flavor;
+
+      let message = "";
+
+      if (flavor === "classic") {
+        message = "u really are a kitkat girlie arent ya";
+      } else if (flavor === "strawberry") {
+        message = "Sweet. Slightly dramatic. Very you.";
+      } else if (flavor === "spicy") {
+        message = "of course you chose the spicy one u freak";
+      } else {
+        message = "..babe u arent mysterious and cool and nonchalant why pick this";
+      }
+
+      result.textContent = message;
+      spawnChocoRain();
+    });
+  });
+}
+
+function spawnChocoRain() {
+  for (let i = 0; i < 10; i++) {
+    const drop = document.createElement("div");
+    drop.textContent = "🍫";
+    drop.style.position = "fixed";
+    drop.style.left = Math.random() * window.innerWidth + "px";
+    drop.style.top = "0px";
+    drop.style.fontSize = "1.5rem";
+    drop.style.animation = "chocoFall 2.5s linear forwards";
+    document.body.appendChild(drop);
+
+    setTimeout(() => drop.remove(), 2500);
+  }
+}
+
+
 
 function spawnSoftHearts() {
   for (let i = 0; i < 8; i++) {

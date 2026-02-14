@@ -414,4 +414,55 @@ body.day-page {
     opacity: 0;
   }
 }
+/* ===== CHOCOLATE DAY ===== */
+
+.choco-title {
+  font-family: 'Fredoka', cursive;
+  color: #ff4d88;
+  font-size: 2rem;
+  margin-bottom: 0.6rem;
+}
+
+.choco-text {
+  margin-bottom: 1.4rem;
+}
+
+.choco-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.choco-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.8rem 1rem;
+  font-family: 'Fredoka', cursive;
+  cursor: pointer;
+  background: #ffe3ec;
+  transition: transform 0.2s ease;
+}
+
+.choco-btn:hover {
+  transform: scale(1.05);
+}
+
+.choco-result {
+  font-family: 'Fredoka', cursive;
+  color: #ff4d88;
+  margin-top: 0.8rem;
+}
+
+/* Chocolate rain animation */
+@keyframes chocoFall {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(400px);
+    opacity: 0;
+  }
+}
 
