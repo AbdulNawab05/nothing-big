@@ -166,6 +166,44 @@ else if (day == 9) {
   });
 }
 
+else if (day == 10) {
+  content.innerHTML = `
+    <h2 class="teddy-title">Teddy Day 🧸</h2>
+
+    <p class="teddy-text">
+      The only teddy u need babe throw away that 
+      George mf
+    </p>
+
+    <div class="teddy-wrap">
+      <div class="teddy-glow-ring"></div>
+      <img src="teddy.png" id="teddy" class="teddy-img idle" />
+      <span class="teddy-hint">tap the teddy</span>
+    </div>
+
+    <p id="teddy-note" class="teddy-note"></p>
+
+  `;
+
+  const teddy = document.getElementById("teddy");
+  const note = document.getElementById("teddy-note");
+  
+
+  teddy.addEventListener("click", () => {
+    teddy.classList.remove("idle");
+    teddy.classList.add("hug");
+
+    document.body.classList.add("teddy-warm");
+
+    note.textContent = "I wish i could hug u instead";
+
+    spawnSoftHearts();
+
+    
+  });
+}
+
+
 function spawnChocoRain() {
   for (let i = 0; i < 10; i++) {
     const drop = document.createElement("div");
